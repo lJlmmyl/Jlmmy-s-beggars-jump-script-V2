@@ -1,19 +1,56 @@
-# Build and Release Folders
-bin/
-bin-debug/
-bin-release/
-[Oo]bj/ # FlashDevelop obj
-[Bb]in/ # FlashDevelop bin
+//Thanks to blindpyro for the mp_tournament trick
+//The reason why it looks os much like Avaray's jump script is because I basically copy pasted his jump script and modified it to make it work for beggars
+// ----- INSTALLATION GUIDE
+// 1. Copy jump.cfg file into directory: 
+// STEAM/steamapps/common/Team Fortress 2/tf/cfg
+// or
+// STEAM/steamapps/common/Team Fortress 2/tf/custom/YOUR_NICE_DIRECTORY_NAME/cfg
+// 2. Launch your home (Local) server
+// 3. Join to team, pick your class (Soldier? Demo? Pyro?)
+// 4. Open console and type "exec jump"
+// 5. Play
 
-# Other files and folders
-.settings/
+// ----- SERVER SETTINGS
+sv_cheats "1" 
+sv_allow_wait_command "1"
+tf_weapon_criticals "0"
+tf_damage_disablespread "1"
+tf_use_fixed_weaponspreads "1"
+mp_disable_respawn_times "1"
+mp_waitingforplayers_cancel "1"
+hurtme -1000000
+net_fakelag 30
+mp_tournament 1
+wait 5
+mp_tournament_restart
+wait 5
+mp_tournament 0
+alias "regen" "givecurrentammo 101; wait 3; regen"
+regen
+buddha
+con_timestamp "0"
+con_logfile console.log
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
+bind "F1" "gotoPosition1"
+bind "F2" "gotoPosition2"
+bind "F3" "gotoPosition3"
+bind "F4" "gotoPosition4"
+bind "F5" "gotoPosition5"
+bind "ALT" "+savePosition"
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+alias "+savePosition" "bind F1 savePosition1; bind F2 savePosition2; bind F3 savePosition3; bind F4 savePosition4; bind F5 savePosition5"
+alias "-savePosition" "bind F1 gotoPosition1; bind F2 gotoPosition2; bind F3 gotoPosition3; bind F4 gotoPosition4; bind F5 gotoPosition5"
+alias "resetLogfile" "con_logfile console.log"
+alias "savePosition1" "con_logfile cfg/position1; getpos; resetLogfile;"
+alias "savePosition2" "con_logfile cfg/position2; getpos; resetLogfile;"
+alias "savePosition3" "con_logfile cfg/position3; getpos; resetLogfile;"
+alias "savePosition4" "con_logfile cfg/position4; getpos; resetLogfile;"
+alias "savePosition5" "con_logfile cfg/position5; getpos; resetLogfile;"
+alias "gotoPosition1" "exec position1.log"
+alias "gotoPosition2" "exec position2.log"
+alias "gotoPosition3" "exec position3.log"
+alias "gotoPosition4" "exec position4.log"
+alias "gotoPosition5" "exec position5.log"
+
+// ----- MESSAGE TO CONSOLE
+echo "aYyYyLmAo"
